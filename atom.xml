@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>my blog</title>
+  <title>jammy&#39;s blog</title>
   
-  
+  <subtitle>我思故我在</subtitle>
   <link href="http://kimmy-study.github.io/atom.xml" rel="self"/>
   
   <link href="http://kimmy-study.github.io/"/>
@@ -10,7 +10,7 @@
   <id>http://kimmy-study.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Jiaming</name>
     
   </author>
   
