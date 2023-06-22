@@ -5,6 +5,19 @@
     
     <entry>
       <title></title>
+      <link href="/2023/06/22/uvm-xue-xi-ji-cun-qi-mo-xing/"/>
+      <url>/2023/06/22/uvm-xue-xi-ji-cun-qi-mo-xing/</url>
+      
+        <content type="html"><![CDATA[<h1 id="uvm学习：寄存器模型"><a href="#uvm学习：寄存器模型" class="headerlink" title="uvm学习：寄存器模型"></a>uvm学习：寄存器模型</h1><h2 id="寄存器模型概览"><a href="#寄存器模型概览" class="headerlink" title="寄存器模型概览"></a>寄存器模型概览</h2><ul><li><p>寄存器是模块之间互相交谈的窗口</p></li><li><p>通过读出寄存器的状态，获取硬件当前的情况，也可以通过配置寄存器，使得寄存器工作在一定模式下。</p></li><li><p>在验证过程中，寄存器的验证也排在了验证清单的前列，因为只有保证寄存器功能的正确，才能使得硬件与硬件的交谈是一致的。</p></li><li><p>如果寄存器配置结果与寄存器内容不同，硬件无法工作在想要的模式下，寄存器可能无法正确反应硬件的状态。</p></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/2023/06/22/diao-shi-yong-xi-tong-ren-wu-he-he-chang-yong-bian-yi-yu-chu-li-de-yu-ju/"/>
       <url>/2023/06/22/diao-shi-yong-xi-tong-ren-wu-he-he-chang-yong-bian-yi-yu-chu-li-de-yu-ju/</url>
       
