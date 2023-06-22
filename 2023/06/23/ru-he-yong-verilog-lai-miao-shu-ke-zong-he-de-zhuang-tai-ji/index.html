@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="typora-vue-theme主题介绍, ic学习笔记 physics python">
+    <meta name="keywords" content="如何用Verilog来描述可综合的状态机, ic学习笔记 physics python">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>typora-vue-theme主题介绍 | jammy&#39;s blog</title>
+    <title>如何用Verilog来描述可综合的状态机 | jammy&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">typora-vue-theme主题介绍</h1>
+                    <h1 class="description center-align post-title">如何用Verilog来描述可综合的状态机</h1>
                 </div>
             </div>
         </div>
@@ -434,12 +434,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Typora/">
-                                <span class="chip bg-color">Typora</span>
+                            <a href="/tags/verilog/">
+                                <span class="chip bg-color">verilog</span>
                             </a>
                         
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
+                            <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">
+                                <span class="chip bg-color">数字电路</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/">
+                                <span class="chip bg-color">有限状态机</span>
                             </a>
                         
                     </div>
@@ -463,21 +467,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-21
+                    2023-06-23
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-22
+                    2023-06-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    104
+                    179
                 </div>
                 
 
@@ -507,16 +511,62 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="深入理解阻塞赋值与非阻塞赋值"><a href="#深入理解阻塞赋值与非阻塞赋值" class="headerlink" title="深入理解阻塞赋值与非阻塞赋值"></a>深入理解阻塞赋值与非阻塞赋值</h1><h2 id="阻塞赋值和非阻塞赋值的异同"><a href="#阻塞赋值和非阻塞赋值的异同" class="headerlink" title="阻塞赋值和非阻塞赋值的异同"></a>阻塞赋值和非阻塞赋值的异同</h2><p>$$<br>\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}<br>\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \<br>\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \<br>\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \<br>\end{vmatrix}<br>$$</p>
-<p><strong>双星号</strong></p>
-<p>printf()</p>
-<p>脚注[^footnote]</p>
-<p>[^footnote]:here is the text of the footnote .</p>
-<hr>
-<p><del>错误的文字</del></p>
-<p><u>下划线</u></p>
-<p>$\lim_{x\to\infty}\exp(-x)=0$</p>
-<p>==高亮==</p>
+                <h1 id="用可综合Verilog模块设计状态机的典型办法"><a href="#用可综合Verilog模块设计状态机的典型办法" class="headerlink" title="用可综合Verilog模块设计状态机的典型办法"></a>用可综合Verilog模块设计状态机的典型办法</h1><ul>
+<li><h3 id="有限状态机的Verilog-HDL模型之一，Gray编码"><a href="#有限状态机的Verilog-HDL模型之一，Gray编码" class="headerlink" title="有限状态机的Verilog HDL模型之一，Gray编码"></a>有限状态机的Verilog HDL模型之一，Gray编码</h3><pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog">    <span class="token keyword">module</span>  fsm <span class="token punctuation">(</span>Clock<span class="token punctuation">,</span> Reset<span class="token punctuation">,</span> A<span class="token punctuation">,</span> K2 <span class="token punctuation">,</span> K1<span class="token punctuation">,</span> state <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">input</span> Clock <span class="token punctuation">,</span> Reset <span class="token punctuation">,</span> A <span class="token punctuation">;</span>
+    <span class="token keyword">output</span> K2 <span class="token punctuation">,</span>K1<span class="token punctuation">;</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token punctuation">]</span> state <span class="token punctuation">;</span>
+    <span class="token keyword">reg</span> K2 <span class="token punctuation">,</span>K1<span class="token punctuation">;</span>
+    <span class="token keyword">reg</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token punctuation">]</span> state <span class="token punctuation">;</span>
+    <span class="token keyword">parameter</span>   Idle  <span class="token operator">=</span><span class="token number">2'b00</span><span class="token punctuation">,</span>
+                Start <span class="token operator">=</span> <span class="token number">2'b01</span><span class="token punctuation">,</span>
+                Stop  <span class="token operator">=</span><span class="token number">2'b10</span><span class="token punctuation">,</span>
+                Clear <span class="token operator">=</span><span class="token number">2'b11</span><span class="token punctuation">,</span>
+    <span class="token important">always @</span><span class="token punctuation">(</span><span class="token keyword">posedge</span> clk<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> Reset <span class="token punctuation">)</span>
+            <span class="token keyword">begin</span> 
+                state <span class="token operator">&lt;=</span>Idle<span class="token punctuation">;</span>
+                K2<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+                K1<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">end</span>
+         <span class="token keyword">else</span>
+             <span class="token function">case</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+                 Idle<span class="token punctuation">:</span><span class="token function">if</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span>  <span class="token keyword">begin</span> 
+                                state<span class="token operator">&lt;=</span> Start<span class="token punctuation">;</span>
+                                    K1<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+                              <span class="token keyword">end</span>
+                 
+        <span class="token keyword">else</span> <span class="token keyword">begin</span>
+            state<span class="token operator">&lt;=</span>Idle<span class="token punctuation">;</span>
+            K2<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+            K1<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">end</span>
+        Start<span class="token punctuation">:</span> <span class="token function">if</span><span class="token punctuation">(</span><span class="token operator">!</span>A<span class="token punctuation">)</span>   state <span class="token operator">&lt;=</span>Stop<span class="token punctuation">;</span>
+               <span class="token keyword">else</span>   state  <span class="token operator">&lt;=</span>Start<span class="token punctuation">;</span> 
+        Stop<span class="token punctuation">:</span> <span class="token function">if</span><span class="token punctuation">(</span><span class="token operator">!</span>A<span class="token punctuation">)</span> <span class="token keyword">begin</span> 
+                state<span class="token operator">&lt;=</span>Clear<span class="token punctuation">;</span>
+                K2<span class="token operator">&lt;=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">end</span>
+        <span class="token keyword">else</span> <span class="token keyword">begin</span> 
+            state<span class="token operator">&lt;=</span>Stop<span class="token punctuation">;</span>
+            K2<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+            K1<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">end</span>
+        Clear<span class="token punctuation">:</span> <span class="token function">if</span><span class="token punctuation">(</span><span class="token operator">!</span>A<span class="token punctuation">)</span> <span class="token keyword">begin</span> 
+                state<span class="token operator">&lt;=</span> Idle<span class="token punctuation">;</span>
+                K2<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+                K1<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">end</span>
+        <span class="token keyword">else</span> <span class="token keyword">begin</span> 
+            state<span class="token operator">&lt;=</span> Clear<span class="token punctuation">;</span>
+            K2<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">;</span>
+            K1<span class="token operator">&lt;=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">end</span>
+        <span class="token keyword">default</span><span class="token punctuation">:</span> state<span class="token operator">&lt;=</span> <span class="token number">2'bxx</span><span class="token punctuation">,</span> 
+             <span class="token keyword">endcase</span>
+<span class="token keyword">endmodule</span> 
+        <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
 
                 
             </div>
@@ -543,7 +593,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://kimmy-study.github.io/2023/06/21/shen-ru-li-jie-zu-sai-fu-zhi-yu-fei-zu-sai-fu-zhi/">http://kimmy-study.github.io/2023/06/21/shen-ru-li-jie-zu-sai-fu-zhi-yu-fei-zu-sai-fu-zhi/</a>
+                    <a href="http://kimmy-study.github.io/2023/06/23/ru-he-yong-verilog-lai-miao-shu-ke-zong-he-de-zhuang-tai-ji/">http://kimmy-study.github.io/2023/06/23/ru-he-yong-verilog-lai-miao-shu-ke-zong-he-de-zhuang-tai-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -581,12 +631,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Typora/">
-                                    <span class="chip bg-color">Typora</span>
+                                <a href="/tags/verilog/">
+                                    <span class="chip bg-color">verilog</span>
                                 </a>
                             
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
+                                <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">
+                                    <span class="chip bg-color">数字电路</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/">
+                                    <span class="chip bg-color">有限状态机</span>
                                 </a>
                             
                         </div>
@@ -630,11 +684,70 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/22/diao-shi-yong-xi-tong-ren-wu-he-he-chang-yong-bian-yi-yu-chu-li-de-yu-ju/">
+                <a href="/2023/06/23/ru-he-yong-verilog-lai-miao-shu-ke-zong-he-de-zhuang-tai-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="如何用Verilog来描述可综合的状态机">
+                        
+                        <span class="card-title">如何用Verilog来描述可综合的状态机</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category">
+                                    Markdown
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/verilog/">
+                        <span class="chip bg-color">verilog</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">
+                        <span class="chip bg-color">数字电路</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/">
+                        <span class="chip bg-color">有限状态机</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/22/uvm-xue-xi-ji-cun-qi-mo-xing/">
                     <div class="card-image">
                         
                         
@@ -650,45 +763,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Jiaming
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/06/20/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
                             </span>
                         <span class="publish-author">
                             

@@ -6,7 +6,7 @@
   <link href="http://kimmy-study.github.io/atom.xml" rel="self"/>
   
   <link href="http://kimmy-study.github.io/"/>
-  <updated>2023-06-22T09:43:41.910Z</updated>
+  <updated>2023-06-22T16:25:06.365Z</updated>
   <id>http://kimmy-study.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何用Verilog来描述可综合的状态机</title>
+    <link href="http://kimmy-study.github.io/2023/06/23/ru-he-yong-verilog-lai-miao-shu-ke-zong-he-de-zhuang-tai-ji/"/>
+    <id>http://kimmy-study.github.io/2023/06/23/ru-he-yong-verilog-lai-miao-shu-ke-zong-he-de-zhuang-tai-ji/</id>
+    <published>2023-06-22T16:24:37.190Z</published>
+    <updated>2023-06-22T16:25:06.365Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;用可综合Verilog模块设计状态机的典型办法&quot;&gt;&lt;a href=&quot;#用可综合Verilog模块设计状态机的典型办法&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Markdown" scheme="http://kimmy-study.github.io/categories/Markdown/"/>
+    
+    
+    <category term="verilog" scheme="http://kimmy-study.github.io/tags/verilog/"/>
+    
+    <category term="数字电路" scheme="http://kimmy-study.github.io/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/"/>
+    
+    <category term="有限状态机" scheme="http://kimmy-study.github.io/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
